@@ -85,8 +85,8 @@
   Game.prototype.start = function () {
     var game = this;
     key("space", function() {
-        game.bullets.push(new Asteroids.Bullet(game.ship));
-     });
+      game.bullets.push(new Asteroids.Bullet(game.ship));
+    });
 
     var inter = window.setInterval(function () {gameFunc()}, 10);
 
