@@ -63,8 +63,6 @@
       this.ship.angle += .03;
     }
 
-    var game = this;
-
     this.move();
     this.draw();
 
@@ -76,16 +74,20 @@
       if (astr.isCollidedWith(game.ship)) {
         game.stop(myVar);
       }
-      game.bullets.forEach(function(bullet, j) {
+      game.bullets.forEach(function(bullet) {
         if (astr.isCollidedWith(bullet)) {
           game.asteroids.splice(i, 1);
         }
+      });
+    });
+  };
 
-        if (bullet.offScreen()) {
-          game.bullets.splice(j,1);
-        }
-      })
-    })
+  Game.prototype.removeObjects = function () {
+    game.bullets.forEach(function(bullet, i) {
+      if (bullet.offScreen()) {
+        game.bullets.splice(i,1);
+      }
+    });
   };
 
   Game.prototype.stop = function (myVar) {
@@ -103,6 +105,7 @@
 
     var gameFunc = function () {
       game.step();
+      game.removeObjects();
       game.checkCollisions(inter);
     };
 
