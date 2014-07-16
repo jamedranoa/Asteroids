@@ -37,26 +37,30 @@
     });
   };
 
+  Game.prototype.changeVel = function (dir) {
+    var delta = (dir==="up" ? 0.01 : -0.01)
+    this.ship.vel = this.ship.vel.sum(
+      Asteroids.Vector.fromPolar(this.ship.angle, delta));
+    this.ship.vel = Asteroids.Vector.fromPolar(
+      this.ship.vel.angle(),
+      Math.min(Game.MAX_SPEED, this.ship.vel.magnitude()));
+  }
+
   Game.prototype.step = function () {
     if (key.isPressed("up")) {
-      this.ship.vel = this.ship.vel.sum(
-        Asteroids.Vector.fromPolar(this.ship.angle, 0.01));
-      this.ship.vel = Asteroids.Vector.fromPolar(
-        this.ship.vel.angle(),
-        Math.min(Game.MAX_SPEED, this.ship.vel.magnitude()));
+      this.changeVel("up")
     }
 
     if (key.isPressed("down")) {
-      this.ship.vel = this.ship.vel.sum(
-        Asteroids.Vector.fromPolar(this.ship.angle, -0.01));
+      this.changeVel("down")
     }
 
     if (key.isPressed("left")) {
-      this.ship.angle -= .01;
+      this.ship.angle -= .03;
     }
 
     if (key.isPressed("right")) {
-      this.ship.angle += .01;
+      this.ship.angle += .03;
     }
 
     var game = this;
