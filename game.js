@@ -9,7 +9,7 @@
     this.ctx = ctx;
     this.xDim = Game.DIM_X;
     this.yDim = Game.DIM_Y;
-    for (var i = 0; i < 20 ; i++) {
+    for (var i = 0; i < 2 ; i++) {
       this.asteroids.push(new Asteroids.Asteroid());
     };
   };
@@ -20,6 +20,7 @@
 
   Game.DIM_X = 1000;
   Game.DIM_Y = 500;
+  Game.MAX_SPEED = 2.87;
 
   Game.prototype.draw = function() {
     var ctx = this.ctx;
@@ -40,6 +41,9 @@
     if (key.isPressed("up")) {
       this.ship.vel = this.ship.vel.sum(
         Asteroids.Vector.fromPolar(this.ship.angle, 0.01));
+      this.ship.vel = Asteroids.Vector.fromPolar(
+        this.ship.vel.angle(),
+        Math.min(Game.MAX_SPEED, this.ship.vel.magnitude()));
     }
 
     if (key.isPressed("down")) {
@@ -48,7 +52,6 @@
     }
 
     if (key.isPressed("left")) {
-
       this.ship.angle -= .01;
     }
 
@@ -67,7 +70,6 @@
     var game = this;
     this.asteroids.forEach(function(astr, i){
       if (astr.isCollidedWith(game.ship)) {
-        alert("You Lose!!");
         game.stop(myVar);
       }
       game.bullets.forEach(function(bullet) {
@@ -80,6 +82,7 @@
 
   Game.prototype.stop = function (myVar) {
     clearInterval(myVar);
+    alert("You Lose!!");
   };
 
   Game.prototype.start = function () {
