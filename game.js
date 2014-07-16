@@ -9,7 +9,7 @@
     this.ctx = ctx;
     this.xDim = Game.DIM_X;
     this.yDim = Game.DIM_Y;
-    for (var i = 0; i < 7 ; i++) {
+    for (var i = 0; i < 33 ; i++) {
       this.asteroids.push(new Asteroids.Asteroid());
     };
   };
@@ -98,7 +98,9 @@
   Game.prototype.start = function () {
     var game = this;
     key("space", function() {
-      game.bullets.push(new Asteroids.Bullet(game.ship));
+      if (game.bullets.length < 5) {
+        game.bullets.push(new Asteroids.Bullet(game.ship));
+      }
     });
 
     var inter = window.setInterval(function () {gameFunc()}, 10);
