@@ -16,6 +16,7 @@
     this.pos.y = ((this.pos.y % DIM_Y) + DIM_Y) % DIM_Y;
   };
 
+
   MovingObject.prototype.draw = function (ctx) {
     ctx.fillStyle = this.color;
     ctx.beginPath();

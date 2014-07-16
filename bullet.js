@@ -15,9 +15,19 @@
     );
   };
 
+  Bullet.inherits(Asteroids.MovingObject);
+
+  Bullet.prototype.move = function() {
+    this.pos = this.pos.sum(this.vel);
+  };
+
+  Bullet.prototype.offScreen = function () {
+    return (this.pos.x < 0 || this.pos.x > Asteroids.Game.DIM_X) ||
+      (this.pos.y < 0 || this.pos.y > Asteroids.Game.DIM_Y)
+  };
+
   Bullet.RADIUS = 3;
   Bullet.COLOR = "black";
   Bullet.SPEED = 3;
 
-  Asteroids.Bullet.inherits(Asteroids.MovingObject);
 }(this));
