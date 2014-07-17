@@ -9,7 +9,7 @@
     this.ctx = ctx;
     this.xDim = Game.DIM_X;
     this.yDim = Game.DIM_Y;
-    for (var i = 0; i < 33 ; i++) {
+    for (var i = 0; i <30 ; i++) {
       this.asteroids.push(new Asteroids.Asteroid());
     };
   };
