@@ -30,5 +30,5 @@
   };
 
   Ship.RADIUS = 5;
-  Ship.COLOR = "blue";
+  Ship.COLOR = "red";
 }(this));

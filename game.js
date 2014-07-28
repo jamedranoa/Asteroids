@@ -5,7 +5,7 @@
     this.asteroids = [];
     this.ship = new Asteroids.Ship();
     this.bullets = [];
-
+    this.counter = 0;
     this.ctx = ctx;
     this.xDim = Game.DIM_X;
     this.yDim = Game.DIM_Y;
@@ -21,6 +21,7 @@
   Game.DIM_X = 1000;
   Game.DIM_Y = 500;
   Game.MAX_SPEED = 2.87;
+  Game.COUNTER = 0;
 
   Game.prototype.draw = function() {
     var ctx = this.ctx;
@@ -77,6 +78,10 @@
       game.bullets.forEach(function(bullet) {
         if (astr.isCollidedWith(bullet)) {
           game.asteroids.splice(i, 1);
+          game.counter += 1;
+          console.log(game.counter)
+
+
         }
       });
     });
@@ -92,7 +97,8 @@
 
   Game.prototype.stop = function (myVar) {
     clearInterval(myVar);
-    alert("You Lose!!");
+    alert("You Lose!! Try Again");
+    location.reload()
   };
 
   Game.prototype.start = function () {
@@ -108,9 +114,11 @@
     var gameFunc = function () {
       game.step();
       game.removeObjects();
+      game.ctx.font= "40pt Arial";
+      game.ctx.fillStyle = "green"
+      game.ctx.fillText(game.counter,10,50);
       game.checkCollisions(inter);
     };
-
 
   };
 }(this));

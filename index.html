@@ -12,7 +12,7 @@
 
   body {
     font-family: sans-serif;
-    background: #eee;
+    background: black;
     color: #333;
     overflow-y:hidden;
   }
@@ -32,16 +32,55 @@
     display:block;
   }
 
+  .header{
+    background:black;
+    padding:20px;
+  }
+
+  .header h1{
+    margin:auto;
+    font-size:40px;
+    color:white;
+    text-align:center;
+    font-family: "Brush Script MT", cursive;
+  }
+
+  small{
+    font-size:10px;
+    font-family:sans-serif;
+  }
+
   #for-canvas{
     margin:auto;
-    border:1px solid blue;
+    margin-top: 20px;
     width:1002px;
   }
 
   canvas{
-    border:2px solid red;
+    border:5px solid white;
     background:black;
+    border-radius:10px;
   }
+
+  h3{
+    color:white;
+    text-align:center;
+    font-size:30px;
+  }
+
+  img{
+    width:200px;
+  }
+  .for-images{
+    margin:auto;
+    width:460px;
+  }
+
+  img:last-child{
+    margin-left:40px;
+  }
+
+
 
 </style>
 
@@ -57,8 +96,15 @@
     <script src="asteroid.js"></script>
     <script src="ship.js"></script>
     <script src="bullet.js"></script>
-
+    <div class = "header">
+      <h1>Asteroids <small>by Jorge Medrano</small></h1>
+    </div>
     <div id="for-canvas"><canvas></canvas><div>
+    <h3>Use:</h3>
+    <div class="for-images">
+      <img src="spacebar.png">
+      <img src="arrow_keys.png">
+    </div>
 
 
     <script>
