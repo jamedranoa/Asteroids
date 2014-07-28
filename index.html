@@ -1,5 +1,50 @@
 <!DOCTYPE html>
 <html>
+<style>
+  html, body, header, h1, h2, nav, ul, li, a, footer, small {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+  }
+
+
+  body {
+    font-family: sans-serif;
+    background: #eee;
+    color: #333;
+    overflow-y:hidden;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .group:after{
+    content:"";
+    clear:both;
+    display:block;
+  }
+
+  #for-canvas{
+    margin:auto;
+    border:1px solid blue;
+    width:1002px;
+  }
+
+  canvas{
+    border:2px solid red;
+    background:black;
+  }
+
+</style>
+
 <head>
     <title>Asteroids</title>
 </head>
@@ -13,7 +58,7 @@
     <script src="ship.js"></script>
     <script src="bullet.js"></script>
 
-    <canvas></canvas>
+    <div id="for-canvas"><canvas></canvas><div>
 
 
     <script>
